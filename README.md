@@ -28,7 +28,7 @@ Boton limpiar
 Limpiara todos los campos si estan llenos.
 --------------------------------------
 # Creado por:
-1.  Denisse Carmen Guadarrama Figueroa,
-2.  Liliana Alcantara Flores,
-3.  Luis Eduardo Lopez Urbina
+- Denisse Carmen Guadarrama Figueroa,
+- Liliana Alcantara Flores,
+- Luis Eduardo Lopez Urbina
 --------------------------------------
