@@ -44,6 +44,7 @@ public class CRUD extends javax.swing.JFrame {
         txtApellido.setText(null);
         txtUsuario.setText(null);
         txtNuevaContraseña.setText(null);
+        txtid.setText(null);
     }
     //--------------------------------------------------------------------------
     
