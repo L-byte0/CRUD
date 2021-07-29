@@ -5,11 +5,11 @@ La base de datos ya contiene dos registros de pruebas para probar el funcionamie
 Al colocar las credenciales correctamente se abrira el frame de registros en donde se podran hacer las operaciones basicas de un CRUD (CREATED, READ, UPDATE, DELETE)
 ---------------------------------------
 ##Usuario 1 
--Usuario :LOU12
--Contraseñe: contraseña
+1.  Usuario :LOU12
+2.  Contraseñe: contraseña
 ##Usuario 2
--Usuario: TYPU14
--Contraseña: nueva2
+1-  Usuario: TYPU14
+2.  Contraseña: nueva2
 ---------------------------------------
 Boton Guardar
 Para hacer uso de este boton todos los campos tienen que estar llenos, al presionar el boton mandara mensaje si fue exitosa o no la operacion.
