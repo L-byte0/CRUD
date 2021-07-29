@@ -6,9 +6,9 @@ Al colocar las credenciales correctamente se abrira el frame de registros en don
 ---------------------------------------
 ## Usuario 1 
 1.  Usuario :LOU12
-2.  Contraseñe: contraseña
+2.  Contraseña: contraseña
 ## Usuario 2
-1-  Usuario: TYPU14
+1.  Usuario: TYPU14
 2.  Contraseña: nueva2
 ---------------------------------------
 Boton Guardar
