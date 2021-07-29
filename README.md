@@ -19,7 +19,7 @@ Al hacer uso de este boton se eliminara el registro de la base de datos y ya no 
 ---------------------------------------
 Boton limpiar
 Limpiara todos los campos si estan llenos.
-
+--------------------------------------
 Creado por:
             Denisse Carmen Guadarrama Figueroa
             Liliana Alcantara Flores
