@@ -173,6 +173,7 @@ public class CRUD extends javax.swing.JFrame {
     //--------------------------------------------------------------------------
     public CRUD() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
