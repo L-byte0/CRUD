@@ -14,7 +14,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         ImageIcon imagen=new ImageIcon("src/icono/icoLogin.jpg");//Ruta de la imagen de icono
-        //Obtiene dimensiones y reescala la imagen
+        //Obtiene dimensiones y reescala la imagen-----------------------------
         Icon icono=new ImageIcon(imagen.getImage().getScaledInstance(labelIcon.getWidth(),labelIcon.getHeight(), Image.SCALE_DEFAULT));
         labelIcon.setIcon(icono);//Establece icono
         this.repaint();

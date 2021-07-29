@@ -49,7 +49,7 @@ public class CRUD extends javax.swing.JFrame {
     
     //------------------------Metodo para guardar registros--------------------
     private void guardar(){
-        Connection con = null;
+        Connection con = null;//Conexion nula
 
         try {
             con = getConnection();
