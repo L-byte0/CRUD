@@ -5,7 +5,7 @@ La base de datos ya contiene dos registros de pruebas para probar el funcionamie
 Al colocar las credenciales correctamente se abrira el frame de registros en donde se podran hacer las operaciones basicas de un CRUD (CREATED, READ, UPDATE, DELETE)
 ---------------------------------------
 ## Usuario 1 
-1.  Usuario :LOU12
+1.  Usuario: LOU12
 2.  Contraseña: contraseña
 ## Usuario 2
 1.  Usuario: TYPU14
@@ -28,7 +28,7 @@ Al hacer uso de este boton se eliminara el registro de la base de datos y ya no 
 Limpiara todos los campos si estan llenos.
 --------------------------------------
 # Creado por:
-- Denisse Carmen Guadarrama Figueroa,
-- Liliana Alcantara Flores,
-- Luis Eduardo Lopez Urbina
+- Denisse Carmen Guadarrama Figueroa.
+- Liliana Alcantara Flores.
+- Luis Eduardo Lopez Urbina.
 --------------------------------------
