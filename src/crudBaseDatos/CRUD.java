@@ -1,5 +1,7 @@
 package crudBaseDatos;
+
 //Se importa los componentes
+import java.awt.event.KeyEvent;
 import javax.swing.UIManager; //look&feel
 //-------------------Librerias de mysql para conexion---------------------------
 import java.sql.Connection;
@@ -10,18 +12,18 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;// ventana emergente
 
 public class CRUD extends javax.swing.JFrame {
-    
+
     //----------------------Credenciales para la conexion-----------------------
     public static final String URL = "jdbc:mysql://localhost:3306/proyecto";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "toor";
     //--------------------------------------------------------------------------
-    
+
     // -----------Variables para hacer las consultas y resultados---------------
     PreparedStatement ps;
     ResultSet rs;
     //--------------------------------------------------------------------------
-    
+
     //---------------------Conexion con la base de datos------------------------
     public static Connection getConnection() {
         Connection con = null;
@@ -37,9 +39,9 @@ public class CRUD extends javax.swing.JFrame {
         return con;
     }
     //--------------------------------------------------------------------------
-    
+
     //--------------Metodo para limpiar las cajas de texto----------------------
-    private void limpiarCaja(){
+    private void limpiarCaja() {
         txtNombre.setText(null);
         txtApellido.setText(null);
         txtUsuario.setText(null);
@@ -47,9 +49,9 @@ public class CRUD extends javax.swing.JFrame {
         txtid.setText(null);
     }
     //--------------------------------------------------------------------------
-    
+
     //------------------------Metodo para guardar registros--------------------
-    private void guardar(){
+    private void guardar() {
         Connection con = null;//Conexion nula
 
         try {
@@ -64,54 +66,54 @@ public class CRUD extends javax.swing.JFrame {
             ps.setString(5, txtUsuario.getText());
             ps.setString(6, txtNuevaContraseña.getText());
             //------------------------------------------------------------------
-            
+
             //-----------Actualizacion de registros y confirmacion--------------
-            int res=ps.executeUpdate();
-            if(res>0){
+            int res = ps.executeUpdate();
+            if (res > 0) {
                 JOptionPane.showMessageDialog(null, "Registro Guardado");
                 limpiarCaja();
-                
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Error!");
                 limpiarCaja();
             }
-            
+
             con.close();
             //-----------------------------------------------------------------
-            
-        //------------------Cierre de la exeption------------------------------
+
+            //------------------Cierre de la exeption------------------------------
         } catch (Exception e) {
             System.out.println(e);
         }
         //----------------------------------------------------------------------
     }
     //-------------------------------------------------------------------------
-    
+
     //----------------------Metodo para modificar registro----------------------
-    private void modificar(){
+    private void modificar() {
         Connection con = null;
 
         try {
             con = getConnection();
             ps = con.prepareStatement("UPDATE usuarios SET nombre=?, apellido=?,sexo=?, nombreUsuario=?, contraseña=? WHERE idusuario=?");
-            
+
             ps.setString(1, txtNombre.getText());
             ps.setString(2, txtApellido.getText());
             ps.setString(3, cbxSex.getSelectedItem().toString());
             ps.setString(4, txtUsuario.getText());
             ps.setString(5, txtNuevaContraseña.getText());
             ps.setString(6, txtid.getText());
-            
-            int res=ps.executeUpdate();
-            if(res>0){
+
+            int res = ps.executeUpdate();
+            if (res > 0) {
                 JOptionPane.showMessageDialog(null, "Registro modificado");
                 limpiarCaja();
-                
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "¡Error al modificar!", "Error", JOptionPane.ERROR_MESSAGE);
                 limpiarCaja();
             }
-            
+
             con.close();
 
         } catch (Exception e) {
@@ -119,58 +121,59 @@ public class CRUD extends javax.swing.JFrame {
         }
     }
     //-------------------------------------------------------------------------
-    
+
     //---------------------Metodo para buscar registro--------------------------
-    private void buscar(){
-        Connection con=null;
-        try{
+    private void buscar() {
+        Connection con = null;
+        try {
             con = getConnection();
-            
+
             ps = con.prepareStatement("SELECT * FROM usuarios WHERE idusuario=?");
-            ps.setString(1,txtid.getText());
-            rs=ps.executeQuery();
-            
-            if(rs.next()){
+            ps.setString(1, txtid.getText());
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
                 txtid.setText(rs.getString("idusuario"));
                 txtNombre.setText(rs.getString("nombre"));
                 txtApellido.setText(rs.getString("apellido"));
                 cbxSex.setSelectedItem(rs.getString("sexo"));
                 txtUsuario.setText(rs.getString("nombreUsuario"));
                 txtNuevaContraseña.setText(rs.getString("contraseña"));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Clave inexistente");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
     //--------------------------------------------------------------------------
-    
+
     //-----------------Metodo para eliminar un registro-------------------------
-    private void eliminar(){
+    private void eliminar() {
         Connection con = null;
 
         try {
             con = getConnection();
             ps = con.prepareStatement("DELETE FROM usuarios WHERE idusuario=?");
             ps.setInt(1, Integer.parseInt(txtid.getText()));
-            
-            int res=ps.executeUpdate();
-            if(res>0){
+
+            int res = ps.executeUpdate();
+            if (res > 0) {
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
                 limpiarCaja();
-                
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "¡Error al intentar eliminar!", "Error", JOptionPane.ERROR_MESSAGE);
                 limpiarCaja();
             }
-            
+
             con.close();
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+
     //--------------------------------------------------------------------------
     public CRUD() {
         initComponents();
@@ -273,10 +276,20 @@ public class CRUD extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
+            }
+        });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
             }
         });
 
@@ -299,6 +312,11 @@ public class CRUD extends javax.swing.JFrame {
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtidActionPerformed(evt);
+            }
+        });
+        txtid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtidKeyTyped(evt);
             }
         });
 
@@ -435,22 +453,61 @@ public class CRUD extends javax.swing.JFrame {
         eliminar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    //Metodo de aviso solo caracteres tipo texto en campo nombre----------------
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // Declaramos una variable y le asignamos un evento
+        char car = evt.getKeyChar();
+        //Condición que nos permite ingresar datos de tipo texto
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && (car != (char) KeyEvent.VK_BACK_SPACE) && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se admite text", "Validar Texto",
+                     JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+    //Fin de metodo-------------------------------------------------------------
+
+    //Metodo para aviso para solo caracteres de tipo texto en apellido-----------
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // Declaramos una variable y le asignamos un evento
+        char car = evt.getKeyChar();
+        //Condición que nos permite ingresar datos de tipo texto
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && (car != (char) KeyEvent.VK_BACK_SPACE) && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se admite texto", "Validar Texto",
+                     JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
+    //Fin de metodo-------------------------------------------------------------
+
+    //Metodo para aviso de solo numeros en el campo de ID-----------------------
+    private void txtidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidKeyTyped
+        // Declaramos una variable y le asignamos un evento
+        char car = evt.getKeyChar();
+        //Condición que nos permite ingresar datos numéricos
+        if ((car < '0' || car > '9')
+                && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se admiten números enteros", "Validar Números",
+                     JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_txtidKeyTyped
+    //Fin de metodo-------------------------------------------------------------
+
     public static void main(String args[]) {
         //--------------Se establece el look&feel de windows--------------------
         String os = System.getProperty("os.name").toLowerCase();
         String name = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
         if (os.indexOf("win") >= 0) {
-     try {
-          UIManager.setLookAndFeel(name);
-     }
-     catch (Exception e) {}
-}
+            try {
+                UIManager.setLookAndFeel(name);
+            } catch (Exception e) {
+            }
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              
+
                 new CRUD().setVisible(true);
             }
         });

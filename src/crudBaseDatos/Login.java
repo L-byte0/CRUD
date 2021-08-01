@@ -1,4 +1,5 @@
 package crudBaseDatos;
+
 import static crudBaseDatos.CRUD.getConnection;
 import java.awt.Image;
 import java.sql.Connection;
@@ -8,17 +9,20 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+
 public class Login extends javax.swing.JFrame {
+
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
-        
-        ImageIcon imagen=new ImageIcon("src/icono/icoLogin.jpg");//Ruta de la imagen de icono
+
+        ImageIcon imagen = new ImageIcon("src/icono/icoLogin.jpg");//Ruta de la imagen de icono
         //Obtiene dimensiones y reescala la imagen-----------------------------
-        Icon icono=new ImageIcon(imagen.getImage().getScaledInstance(labelIcon.getWidth(),labelIcon.getHeight(), Image.SCALE_DEFAULT));
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(labelIcon.getWidth(), labelIcon.getHeight(), Image.SCALE_DEFAULT));
         labelIcon.setIcon(icono);//Establece icono
         this.repaint();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,53 +159,53 @@ public class Login extends javax.swing.JFrame {
     PreparedStatement ps;
     ResultSet rs;
     //--------------------------------------------------------------------------
-    
+
     //------------Metodo para validar las credeciales de usuario----------------
-    public void validar(){
-        
-        Connection con=null; //Conexion nula
-        int resultado=0; //bandera para la validacion
-        
+    public void validar() {
+
+        Connection con = null; //Conexion nula
+        int resultado = 0; //bandera para la validacion
+
         //-------Obtiene texto ingresado de usuario y contraseña----------------
-        String pass=String.valueOf(txtContraseña.getPassword());
-        String usuario=txtNombreUsuario.getText();
+        String pass = String.valueOf(txtContraseña.getPassword());
+        String usuario = txtNombreUsuario.getText();
         //----------------------------------------------------------------------
-        
-        try{
+
+        try {
             con = getConnection();//Inicia conexion
             //Prepara la consulta a ejecutar (Se escribe la consulta)
-            ps = con.prepareStatement("select * from usuarios where nombreUsuario='"+usuario+"' and contraseña='"+pass+"' ");
-            rs=ps.executeQuery();//Se ejecuta la consulta
-            
-            if(rs.next()){
-                resultado=1;//Cambia la bandera a 1 (positivo)
-                
-                if(resultado==1){ //Si la bandera es positiva muestra el siguiente formulario
-                    CRUD form=new CRUD();
+            ps = con.prepareStatement("select * from usuarios where nombreUsuario='" + usuario + "' and contraseña='" + pass + "' ");
+            rs = ps.executeQuery();//Se ejecuta la consulta
+
+            if (rs.next()) {
+                resultado = 1;//Cambia la bandera a 1 (positivo)
+
+                if (resultado == 1) { //Si la bandera es positiva muestra el siguiente formulario
+                    CRUD form = new CRUD();
                     form.setVisible(true);
                     this.dispose();
                 }
-            }else{
+            } else {
                 //Mensaje de error
-                JOptionPane.showMessageDialog(null, "Usuario invalido, verifique credenciales","¡Error!",JOptionPane.ERROR_MESSAGE );
-                
+                JOptionPane.showMessageDialog(null, "Usuario invalido, verifique credenciales", "¡Error!", JOptionPane.ERROR_MESSAGE);
+
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
+
     public static void main(String args[]) {
-               //--------------Se establece el look&feel de windows--------------------
+        //--------------Se establece el look&feel de windows--------------------
         String os = System.getProperty("os.name").toLowerCase();
         String name = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
         if (os.indexOf("win") >= 0) {
-     try {
-          UIManager.setLookAndFeel(name);
-     }
-     catch (Exception e) {}
-}
+            try {
+                UIManager.setLookAndFeel(name);
+            } catch (Exception e) {
+            }
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
