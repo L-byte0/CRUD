@@ -1,27 +1,34 @@
 # CRUD
 Creacion de CRUD basico
 ---------------------------------------
-La base de datos ya contiene dos refristros de pruebas para probar el funcionamiento del login
+La base de datos ya contiene dos registros de pruebas para probar el funcionamiento del login
 Al colocar las credenciales correctamente se abrira el frame de registros en donde se podran hacer las operaciones basicas de un CRUD (CREATED, READ, UPDATE, DELETE)
 ---------------------------------------
-Boton Guardar
+## Usuario 1 
+1.  Usuario: LOU12
+2.  Contraseña: contraseña
+## Usuario 2
+1.  Usuario: TYPU14
+2.  Contraseña: nueva2
+---------------------------------------
+## Boton Guardar
 Para hacer uso de este boton todos los campos tienen que estar llenos, al presionar el boton mandara mensaje si fue exitosa o no la operacion.
 Al hacer uso de este boton el registro quedara guardado en la base de datos.
 ---------------------------------------
-Boton buscar
+## Boton buscar
 Se tiene que insertar un ID en su parte correspondiente y presionar el boton para verificar que se encuentra registrado.
 Si el usuario no esta dado de alta arroja un mensaje de clave inexistente.
 Al hacer uso de este boton todos los campos se llenaran automaticamente.
 ---------------------------------------
-Boton borrar
+## Boton borrar
 Se tiene que estar con el registro de usuario, basta con hacer uso del boton de buscar mencionado anteriormente.
 Al hacer uso de este boton se eliminara el registro de la base de datos y ya no se podra recuperar.
 ---------------------------------------
-Boton limpiar
+## Boton limpiar
 Limpiara todos los campos si estan llenos.
 --------------------------------------
-Creado por:
-Denisse Carmen Guadarrama Figueroa,
-Liliana Alcantara Flores,
-Luis Eduardo Lopez Urbina
+# Creado por:
+- Denisse Carmen Guadarrama Figueroa.
+- Liliana Alcantara Flores.
+- Luis Eduardo Lopez Urbina.
 --------------------------------------
